@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
-const ticketsController = require("../controllers/tickets");
+const projectsController = require("../controllers/projects");
 const { ensureAuth } = require("../middleware/auth");
 
 //Main Routes 
-router.get("/", ensureAuth, ticketsController.getDashboard);
-router.get("/user/:id", ensureAuth, ticketsController.getUser);
+router.get("/", ensureAuth, projectsController.getDashboard);
+router.get("/user/:id", ensureAuth, projectsController.getUser);
 
-// Route for creating new ticket
-router.get("/newTicket", ensureAuth, ticketsController.getNewTicket);
+// Route for creating new project
+router.get("/newProject", ensureAuth, projectsController.getNewProject);
 
 
 //Routes for user login/signup

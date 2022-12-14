@@ -1,44 +1,60 @@
 <%- include('partials/header', {user: ''}) -%>
 
-
-<div class="flex justify-center mt-12 md:my-28">
-  <div class="w-full max-w-md space-y-8">
-    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Create an account
-          </h1>
-          <form class="space-y-4 md:space-y-6" action="/signup" method="POST">
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Create an account!</h1>
+      <p class="py-6">Sign up for a free account and start managing your projects.</p>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <form class="card-body" action="/signup" method="POST">
+        <div class="form-control">
+          <label for="userName" class="label">
+            <span class="label-text">Username</span>
+          </label>
+          <input type="text" name="userName" id="userName" placeholder="Username" class="input input-bordered" />
+          <label for="email" class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" name="email" id="email" placeholder="name@company.com" class="input input-bordered" />
+          <label for="password" class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input type="password" name="password" id="password" placeholder="••••••••" class="input input-bordered" />
+          <label for="confirmPassword" class="label">
+            <span class="label-text">Confirm Password</span>
+          </label>
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••" class="input input-bordered" />
+          <label class="label">
+            <span class="label-text-alt">Or log in to your account. <a href="/login" class="label-text-alt link link-hover">Login</a></span>
+          </label>
+        </div>
+        <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el => { %>
+            <div class="alert alert-warning shadow-lg">
               <div>
-              <input type="text" name="userName" id="userName" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span><%= el.msg %></span>
               </div>
+            </div>
+          <% }) %>
+        <% } %>
+        <% if (locals.messages.info) { %>
+          <% messages.info.forEach( el => { %>
+            <div class="alert alert-info shadow-lg">
               <div>
-                  <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span><%= el.msg %></span>
               </div>
-              <div>
-                  <input type="password" name="password" id="password" placeholder="Password" class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              </div>
-              <div>
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              </div>
-              <% if (locals.messages.errors) { %> 
-                <% messages.errors.forEach( el => { %>
-                <div class="p-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"><%= el.msg %></div>
-                  <% }) %> 
-              <% } %> 
-              <% if (locals.messages.info) { %> 
-                <% messages.info.forEach( el => { %>
-                <div class="p-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"><%= el.msg %></div>
-                <% }) %>
-              <% } %>
-              <button type="submit" class="w-full text-white bg-indigo-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create account</button>
-              <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Or sign in to your account. <a href="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
-              </p>
-          </form>
-      </div>
+            </div>
+          <% }) %>
+        <% } %>
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary">Create account</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
-<%- include('partials/footer') -%>
+<%- include('partials/footer', {user: ''}) -%>

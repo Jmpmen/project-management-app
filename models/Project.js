@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const TicketSchema = new mongoose.Schema({
+const ProjectSchema = new mongoose.Schema({
   subject: {
     type: String,
     required: true,
@@ -38,4 +38,4 @@ const TicketSchema = new mongoose.Schema({
 });
 
 //MongoDB Collection named here - will give lowercase plural of name 
-module.exports = mongoose.model("Ticket", TicketSchema);
+module.exports = mongoose.model("Project", ProjectSchema);

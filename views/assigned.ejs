@@ -16,15 +16,15 @@
                 </a>
             </li>
             <li class="mr-2">
-                <a href="/newTicket" class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
-                    <svg aria-hidden="true" class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd"></path></svg>New ticket
+                <a href="/newProject" class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
+                    <svg aria-hidden="true" class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd"></path></svg>New project
                 </a>
             </li>
         </ul>
     </div>
 </div>
 
-<!-- Assigned Tickets Table -->
+<!-- Assigned Projects Table -->
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
     <div class="container p-10 mx-auto max-w-screen-xl">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -48,22 +48,22 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let i=0; i<tickets.length; i++) {%>
+                <% for(let i=0; i<projects.length; i++) {%>
                 <tr class="<%= i % 2 ? 'bg-gray-50 dark:bg-gray-700' : 'bg-white dark:bg-gray-900'%> border-b dark:border-gray-700">
                     <th scope="row" class="py-4 px-3 font-medium text-gray-900 dark:text-white hover:dark:text-gray-400 hover:text-gray-400">
-                        <a href="/ticket/<%= tickets[i]._id%>"><%= tickets[i].subject.slice(0,50)%></a>
+                        <a href="/project/<%= projects[i]._id%>"><%= projects[i].subject.slice(0,50)%></a>
                       </th>
                     <td class="py-4 px-3">
-                        <%= tickets[i].status%>
+                        <%= projects[i].status%>
                     </td>
                     <td class="py-4 px-3">
-                        <%= tickets[i].severity%>
+                        <%= projects[i].severity%>
                     </td>
                     <td class="py-4 px-3">
-                        <%= tickets[i].assignedTo%>
+                        <%= projects[i].assignedTo%>
                     </td>
                     <td class="py-4 px-3">
-                        <%= tickets[i].createdAt.toUTCString().slice(5)%>
+                        <%= projects[i].createdAt.toUTCString().slice(5)%>
                       </td>
                 </tr>
                 <% } %>
