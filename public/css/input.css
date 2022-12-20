@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer {
+    height: 0px;
+}
+
+@media screen {
+    /* .drawer-mobile {
+        grid-auto-columns: max-content auto;
+      } */
+    
+      .drawer-mobile > .drawer-toggle ~ .drawer-content {
+        height: auto;
+      }
+    
+      @media (min-width: 1024px) {
+        .drawer-mobile > .drawer-toggle ~ .drawer-content {
+          grid-column-start: 2;
+        }
+    
+        .drawer-mobile > .drawer-toggle ~ .drawer-side > .drawer-overlay {
+          visibility: visible;
+        }
+    
+        .drawer-mobile > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+          --tw-translate-x: 0px;
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+    
+        .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-content {
+          grid-column-start: 1;
+        }
+    
+        .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side {
+          grid-column-start: 2;
+        }
+    
+        .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay {
+          visibility: visible;
+        }
+    
+        .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+          --tw-translate-x: 0px;
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+      }
+    
+      .drawer-mobile > .drawer-toggle ~ .drawer-side {
+        overflow-y: auto;
+      }
+    
+      /* .drawer-mobile.drawer-end {
+        grid-auto-columns: auto max-content;
+        direction: ltr;
+      } */
+    
+      .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-content {
+        height: auto;
+      }
+    
+      .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-side {
+        overflow-y: auto;
+      }
+    
+      .drawer-mobile > .drawer-toggle:checked ~ .drawer-content {
+        --tw-translate-x: 0px;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+      }
+}

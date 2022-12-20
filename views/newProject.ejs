@@ -1,7 +1,65 @@
 <%- include('partials/header', {title: 'New Project'}) -%>
 
+<div class="drawer drawer-mobile flex-grow">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+
+        <!-- <div class="hero flex-grow bg-base-200">
+            <div class="hero-content flex-col lg:flex-row"> -->
+            <div class="hero-content">
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form class="card-body" action="/signup" method="POST">
+                <div class="form-control">
+                    <label for="userName" class="label">
+                    <span class="label-text">Username</span>
+                    </label>
+                    <input type="text" name="userName" id="userName" placeholder="Username" class="input input-bordered" />
+                    <label for="email" class="label">
+                    <span class="label-text">Email</span>
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="name@company.com" class="input input-bordered" />
+                    <label for="password" class="label">
+                    <span class="label-text">Password</span>
+                    </label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="input input-bordered" />
+                    <label for="confirmPassword" class="label">
+                    <span class="label-text">Confirm Password</span>
+                    </label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••" class="input input-bordered" />
+                    <label class="label">
+                    <span class="label-text-alt">Or log in to your account. <a href="/login" class="label-text-alt link link-hover">Login</a></span>
+                    </label>
+                </div>
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-warning shadow-lg">
+                        <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        <span><%= el.msg %></span>
+                        </div>
+                    </div>
+                    <% }) %>
+                <% } %>
+                <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info shadow-lg">
+                        <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><%= el.msg %></span>
+                        </div>
+                    </div>
+                    <% }) %>
+                <% } %>
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary">Create account</button>
+                </div>
+                </form>
+            </div>
+            </div>
+        <!-- </div>
+    </div> -->
 <!-- Menu -->
-<div class="border-b border-gray-200 dark:border-gray-700">
+<!-- <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto flex flex-wrap justify-between max-w-screen-xl">
         <span class="p-4 -mb-px text-sm font-medium text-gray-500 dark:text-gray-400 cursor-default md:order-2">Hello, <%=user.userName %></span>
         <ul class="flex -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400 md:order-1">
@@ -22,10 +80,10 @@
             </li>
         </ul>
     </div>
-</div>
+</div> -->
 
 <!-- Create project -->
-<section class="bg-white dark:bg-gray-900">
+<!-- <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new project</h2>
         <form action="/project/createProject" enctype="multipart/form-data" method="POST">
@@ -75,6 +133,8 @@
             <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800">Create project</button>
         </form>
     </div>
-  </section>
+  </section> -->
+</div>
 
+<%- include('partials/sidebar') -%>
 <%- include('partials/footer') -%>

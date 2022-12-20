@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
   </head>
 
-  <body class="min-h-screen">
+  <body class="min-h-screen flex flex-col">
     <header class="navbar bg-base-100">
       <div class="flex flex-col items-center justify-center">
         <%if(user !== ''){ %>
@@ -21,8 +21,3 @@
         <span>Project Management App</span>
       </a>
     </header>
-
-    <%if(user !== ''){ %>
-      <div class="drawer drawer-mobile">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <% } %>
