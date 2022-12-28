@@ -9,9 +9,9 @@ const CommentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  ticket: {
+  project: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Ticket",
+    ref: "Project",
   },
   createdAt: {
     type: Date,

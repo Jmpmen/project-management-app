@@ -1,12 +1,44 @@
-    <div class="drawer-side">
+  <aside class="w-80 bg-base-100 shadow-md">
+    <ul class="menu p-4 text-base-content">
+      <!-- Sidebar content here -->
+      <li id="newProjectButton"><label for="my-drawer-4" class="drawer-button">New project</label></li>
+      <% if (projects.length) {%>
+        <div class="divider"></div>
+      <% } %>
+      <% for(let i=0; i<projects.length; i++) {%>
+      <li><a href="/project/<%= projects[i]._id%>"><%= projects[i].name%></a></li>
+        <% } %>
+      <% if (projects.length) {%>
+        <div class="divider"></div>
+      <% } %>
+      <li><a href="/logout">Sign out</a></li>
+    </ul>
+  </aside>
+
+    <!-- <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <aside class="w-80 bg-base-100">
+        <aside class="0">
           <ul class="menu p-4 text-base-content">
-            <!-- Sidebar content here -->
+            Sidebar content here
             <li><a href="/newProject">New project</a></li>
             <li><a>Sidebar Item 2</a></li>
             <li><a href="/logout">Sign out</a></li>
           </ul>
         </aside>
     </div>
-</div>
+</div> -->
+
+<!-- <aside class="w-60 shadow-md">
+  <ul class="">
+    <li class="">
+      <a class="flex items-center text-sm py-4 px-6 h-12 text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!">Sidenav link 1</a>
+    </li>
+    <li class="">
+      <a class="flex items-center text-sm py-4 px-6 h-12 text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out" href="#!">Sidenav link 2</a>
+    </li>
+    <li class="">
+      <a class="flex items-center text-sm py-4 px-6 h-12 text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-base-200 transition duration-300 ease-in-out" href="#!">Sidenav link 2</a>
+    </li>
+  </ul>
+</aside>
+</div> -->

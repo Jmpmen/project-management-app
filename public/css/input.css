@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 .drawer {
-    height: 0px;
+    height: auto;
 }
 
-@media screen {
-    /* .drawer-mobile {
+/* @media screen {
+    .drawer-mobile {
         grid-auto-columns: max-content auto;
-      } */
+      }
     
       .drawer-mobile > .drawer-toggle ~ .drawer-content {
         height: auto;
@@ -51,10 +51,10 @@
         overflow-y: auto;
       }
     
-      /* .drawer-mobile.drawer-end {
+      .drawer-mobile.drawer-end {
         grid-auto-columns: auto max-content;
         direction: ltr;
-      } */
+      }
     
       .drawer-mobile.drawer-end > .drawer-toggle ~ .drawer-content {
         height: auto;
@@ -68,4 +68,4 @@
         --tw-translate-x: 0px;
         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
       }
-}
+} */

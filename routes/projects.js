@@ -11,7 +11,8 @@ router.get("/:id", ensureAuth, projectsController.getProject);
 
 
 //Enables user to create project w/ cloudinary for media uploads
-router.post("/createProject", upload.single("file"), projectsController.createProject);
+router.post("/newProject", projectsController.newProject);
+router.post("/newTask/:id", projectsController.newTask);
 router.post("/commentProject/:id", projectsController.commentProject);
 
 

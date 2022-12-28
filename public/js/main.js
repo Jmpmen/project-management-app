@@ -1,40 +1,39 @@
-const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+const newProjectButton = document.getElementById('newProjectButton');
+const newProjectDrawer = document.getElementById('newProjectDrawer');
+const addTaskButton = document.getElementById('addTaskButton');
+const addTaskDrawer = document.getElementById('addTaskDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay')
+const todo = document.getElementsByClassName('todo')
+const todoDrawer = document.getElementsByClassName('todoDrawer')
+const doing = document.getElementsByClassName('doing')
+const doingDrawer = document.getElementsByClassName('doingDrawer')
+const done = document.getElementsByClassName('done')
+const doneDrawer = document.getElementsByClassName('doneDrawer')
 
-// Change the icons inside the button based on previous settings
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    themeToggleLightIcon.classList.remove('hidden');
-} else {
-    themeToggleDarkIcon.classList.remove('hidden');
-}
+newProjectButton.addEventListener('click', function() {
+    newProjectDrawer.classList.remove('hidden')
+})
 
-const themeToggleBtn = document.getElementById('theme-toggle');
+addTaskButton.addEventListener('click', function() {
+    addTaskDrawer.classList.remove('hidden')
+})
 
-themeToggleBtn.addEventListener('click', function() {
+drawerOverlay.addEventListener('click', function() {
+    newProjectDrawer.classList.add('hidden')
+    addTaskDrawer.classList.add('hidden')
+    Array.from(todoDrawer).forEach(element => element.classList.add('hidden'))
+    Array.from(doingDrawer).forEach(element => element.classList.add('hidden'))
+    Array.from(doneDrawer).forEach(element => element.classList.add('hidden'))
+})
 
-    // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle('hidden');
-    themeToggleLightIcon.classList.toggle('hidden');
+Array.from(todo).forEach((element,i) => element.addEventListener('click', function() {
+    todoDrawer[i].classList.remove('hidden')
+}))
 
-    // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        }
+Array.from(doing).forEach((element,i) => element.addEventListener('click', function() {
+    doingDrawer[i].classList.remove('hidden')
+}))
 
-    // if NOT set via local storage previously
-    } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    }
-    
-});
+Array.from(done).forEach((element,i) => element.addEventListener('click', function() {
+    doneDrawer[i].classList.remove('hidden')
+}))

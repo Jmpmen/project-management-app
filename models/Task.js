@@ -1,12 +1,25 @@
 const mongoose = require("mongoose");
 
-const ProjectSchema = new mongoose.Schema({
-  name: {
+const TaskSchema = new mongoose.Schema({
+  description: {
     type: String,
     required: true,
   },
-  description: {
+  severity: {
     type: String,
+    required: true,
+  },
+  assignedTo: {
+    type: String,
+  },
+  status: {
+    type: String,
+    required: true,
+    default: 'todo'
+  },
+  project: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Project",
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -23,4 +36,4 @@ const ProjectSchema = new mongoose.Schema({
 });
 
 //MongoDB Collection named here - will give lowercase plural of name 
-module.exports = mongoose.model("Project", ProjectSchema);
+module.exports = mongoose.model("Task", TaskSchema);

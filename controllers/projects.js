@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Project = require("../models/Project");
+const Task = require("../models/Task");
 const Comment = require("../models/Comment");
 const User = require("../models/User");
 
@@ -33,7 +34,7 @@ module.exports = {
   },
   getDashboard: async (req, res) => {
     try {
-      const projects = await Project.find({status: {$ne : "Resolved"}}).sort({ severity: "asc", createdAt: "desc"}).lean();
+      const projects = await Project.find().sort({ dueDate: "desc"}).lean();
       res.render("dashboard.ejs", { projects: projects, user:req.user });
     } catch (err) {
       console.log(err);
@@ -55,33 +56,30 @@ module.exports = {
       console.log(err);
     }
   },
-  createProject: async (req, res) => {
+  newProject: async (req, res) => {
     try {
-      // Upload image to cloudinary
-      
-      if (req.file !== undefined){
-        const result = await cloudinary.uploader.upload(req.file.path);
-        await Project.create({
-          subject: req.body.subject,
-          image: result.secure_url,
-          cloudinaryId: result.public_id,
+      await Project.create({
+          name: req.body.name,
           description: req.body.description,
-          severity: req.body.severity,
-          assignedTo: req.body.assignedTo,
-          status: req.body.status,
           user: req.user.id,
+          dueDate: req.body.dueDate,
         });
-      }else{
-        await Project.create({
-          subject: req.body.subject,
+      console.log("Project has been created!");
+      res.redirect("/");
+      //media is stored on cloudainary - the above request responds with url to media and the media id that you will need when deleting content 
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  newTask: async (req, res) => {
+    try {
+      await Task.create({
+          name: req.body.name,
           description: req.body.description,
-          severity: req.body.severity,
-          assignedTo: req.body.assignedTo,
-          status: req.body.status,
           user: req.user.id,
+          dueDate: req.body.dueDate,
         });
-      }
-      console.log("Project has been added!");
+      console.log("Added new task!");
       res.redirect("/");
       //media is stored on cloudainary - the above request responds with url to media and the media id that you will need when deleting content 
     } catch (err) {
