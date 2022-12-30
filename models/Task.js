@@ -5,17 +5,13 @@ const TaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  severity: {
-    type: String,
-    required: true,
-  },
   assignedTo: {
     type: String,
+    required: true,
   },
   status: {
     type: String,
     required: true,
-    default: 'todo'
   },
   project: {
     type: mongoose.Schema.Types.ObjectId,

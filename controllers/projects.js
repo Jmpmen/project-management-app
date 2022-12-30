@@ -34,8 +34,13 @@ module.exports = {
   },
   getDashboard: async (req, res) => {
     try {
-      const projects = await Project.find().sort({ dueDate: "desc"}).lean();
-      res.render("dashboard.ejs", { projects: projects, user:req.user });
+      const projects = await Project.find().sort({ dueDate: "asc"}).lean();
+      const Users = await User.find().lean();
+      const todos = await Task.find({project: projects[0], status: 'To-Do'}).sort({ dueDate: "asc"}).lean();
+      const doing = await Task.find({project: projects[0], status: 'Doing'}).sort({ dueDate: "asc"}).lean();
+      const done = await Task.find({project: projects[0], status: 'Done'}).sort({ dueDate: "asc"}).lean();
+      const comments = await Comment.find({project: projects[0]}).sort({ createdAt: "desc" }).lean();
+      res.render("dashboard.ejs", { projects: projects, user: req.user, Users: Users, todos: todos, doing: doing, done: done, comments: comments });
     } catch (err) {
       console.log(err);
     }
@@ -46,12 +51,14 @@ module.exports = {
       //router.get("/:id", ensureAuth, projectsController.getProject);
       //http://localhost:2121/post/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
-      const Users = await User.find().lean();
       const project = await Project.findById(req.params.id);
+      const projects = await Project.find().sort({ dueDate: "asc"}).lean();
+      const Users = await User.find().lean();
+      const todos = await Task.find({project: req.params.id, status: 'To-Do'}).sort({ dueDate: "asc"}).lean();
+      const doing = await Task.find({project: req.params.id, status: 'Doing'}).sort({ dueDate: "asc"}).lean();
+      const done = await Task.find({project: req.params.id, status: 'Done'}).sort({ dueDate: "asc"}).lean();
       const comments = await Comment.find({project: req.params.id}).sort({ createdAt: "desc" }).lean();
-      const severity = ['P0','P1','P2','P3']
-      const status = ['Open', 'Pending', 'Resolved']
-      res.render("project.ejs", { Users: Users, project: project, user: req.user, comments: comments, severity: severity, status: status});
+      res.render("project.ejs", { project: project, projects: projects, user: req.user, Users: Users, todos: todos, doing: doing, done: done, comments: comments });
     } catch (err) {
       console.log(err);
     }
@@ -74,27 +81,32 @@ module.exports = {
   newTask: async (req, res) => {
     try {
       await Task.create({
-          name: req.body.name,
           description: req.body.description,
+          project: req.params.id,
           user: req.user.id,
           dueDate: req.body.dueDate,
+          assignedTo: req.body.assignedTo,
+          status: req.body.status,
         });
       console.log("Added new task!");
-      res.redirect("/");
+      res.redirect("/project/"+req.params.id);
       //media is stored on cloudainary - the above request responds with url to media and the media id that you will need when deleting content 
     } catch (err) {
       console.log(err);
     }
   },
-  commentProject: async (req, res) => {
+  commentTask: async (req, res) => {
+    console.log(req)
     try {
       await Comment.create({
         comment: req.body.comment,
         user: req.user.id,
-        project: req.params.id,
+        userName: req.user.userName,
+        task: req.params.id,
+        project: req.params.project,
       });
       console.log("Comment has been added!");
-      res.redirect("/project/"+req.params.id);
+      res.redirect("/project/"+req.params.project);
     } catch (err) {
       console.log(err);
     }
@@ -134,39 +146,36 @@ module.exports = {
     }
   },
   updateStatus: async (req, res) => {
+    console.log(req.user)
     try {
-      await Project.findOneAndUpdate(
+      await Task.findOneAndUpdate(
         { _id: req.params.id },
         {
           status: req.body.status,
         }
       );
-      await Comment.create({
-        comment: `Marked as ${req.body.status}`,
-        user: req.user.id,
-        project: req.params.id,
-      });
       console.log("Updated Status");
-      res.redirect(`/project/${req.params.id}#comments`);
+      res.redirect("/project/"+req.params.project);
     } catch (err) {
       console.log(err);
     }
   },
   updateAssignee: async (req, res) => {
     try {
-      await Project.findOneAndUpdate(
+      await Task.findOneAndUpdate(
         { _id: req.params.id },
         {
           assignedTo: req.body.assignedTo,
         }
       );
-      await Comment.create({
-        comment: `Assigned To: ${req.body.assignedTo}`,
-        user: req.user.id,
-        project: req.params.id,
-      });
+      // await Comment.create({
+      //   comment: `Assigned To: ${req.body.assignedTo}`,
+      //   user: req.user.id,
+      //   project: req.params.id,
+      // });
       console.log("Updated Assignee");
-      res.redirect(`/project/${req.params.id}#comments`);
+      // res.redirect(`/project/${req.params.id}#comments`);
+      res.redirect("/project/"+req.params.project)
     } catch (err) {
       console.log(err);
     }

@@ -13,13 +13,13 @@ router.get("/:id", ensureAuth, projectsController.getProject);
 //Enables user to create project w/ cloudinary for media uploads
 router.post("/newProject", projectsController.newProject);
 router.post("/newTask/:id", projectsController.newTask);
-router.post("/commentProject/:id", projectsController.commentProject);
+router.post("/commentTask/:id/:project", projectsController.commentTask);
 
 
 //Enables user to like project. In controller, uses POST model to update likes by 1
 router.put("/updateSeverity/:id", projectsController.updateSeverity);
-router.put("/updateStatus/:id", projectsController.updateStatus);
-router.put("/updateAssignee/:id", projectsController.updateAssignee);
+router.put("/updateStatus/:id/:project", projectsController.updateStatus);
+router.put("/updateAssignee/:id/:project", projectsController.updateAssignee);
 
 
 //Enables user to delete project. In controller, uses POST model to delete project from MongoDB collection

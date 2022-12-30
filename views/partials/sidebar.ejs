@@ -1,17 +1,14 @@
   <aside class="w-80 bg-base-100 shadow-md">
     <ul class="menu p-4 text-base-content">
       <!-- Sidebar content here -->
-      <li id="newProjectButton"><label for="my-drawer-4" class="drawer-button">New project</label></li>
-      <% if (projects.length) {%>
-        <div class="divider"></div>
-      <% } %>
       <% for(let i=0; i<projects.length; i++) {%>
       <li><a href="/project/<%= projects[i]._id%>"><%= projects[i].name%></a></li>
         <% } %>
       <% if (projects.length) {%>
         <div class="divider"></div>
       <% } %>
-      <li><a href="/logout">Sign out</a></li>
+      <li id="newProjectButton"><label for="my-drawer-4" class="drawer-button">New project</label></li>
+      <li><a href="/logout">Sign out, <%= user.userName %></a></li>
     </ul>
   </aside>
 

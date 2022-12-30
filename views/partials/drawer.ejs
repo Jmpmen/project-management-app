@@ -1,87 +1,238 @@
-    <div class="drawer-side">
-        <label for="my-drawer-4" class="drawer-overlay" id="drawerOverlay"></label>
-        <aside class="w-4/12 bg-base-100">
-            <ul class="menu p-4 text-base-content">
-                <!-- Sidebar content here -->
-                <!-- New Project Drawer -->
-                <li class="hidden" id="newProjectDrawer">
-                    <div class="hero-content">
-                        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                            <form class="card-body" action="/project/newProject" method="POST">
-                            <div class="form-control">
-                                <label for="name" class="label">
-                                    <span class="label-text">Project Name</span>
-                                </label>
-                                <input type="text" name="name" id="name" placeholder="New Project" class="input input-bordered" />
-                                
-                                <label for="description" class="label">
-                                    <span class="label-text">Short description</span>
-                                </label>
-                                <input type="text" name="description" id="description" placeholder="Description" class="input input-bordered" />
+<div class="drawer-side">
+    <label for="my-drawer-4" class="drawer-overlay" id="drawerOverlay"></label>
+    <aside class="w-4/12 bg-base-100">
+        <ul class="p-4 text-base-content">
+            <!-- Sidebar content here -->
+            <!-- New Project Drawer -->
+            <li class="hidden" id="newProjectDrawer">
+                <div class="card w-full bg-base-100">
+                    <form class="card-body" action="/project/newProject" method="POST">
+                        <div class="form-control">
+                            <label for="name" class="label"><span class="label-text">Project Name</span></label>
+                            <input type="text" name="name" id="name" placeholder="New Project" class="input input-bordered" required/>
+                            
+                            <label for="description" class="label"><span class="label-text">Short description</span></label>
+                            <input type="text" name="description" id="description" placeholder="Description" class="input input-bordered" required/>
 
-                                <label for="dueDate" class="label">
-                                    <span class="label-text">Due Date</span>
-                                </label>
-                                <input type="date" name="dueDate" id="dueDate" class="input input-bordered" />                           
-                            </div>
-                            <!-- <% if (locals.messages.errors) { %>
-                                <% messages.errors.forEach( el => { %>
-                                <div class="alert alert-warning shadow-lg">
-                                    <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                                    <span><%= el.msg %></span>
-                                    </div>
-                                </div>
-                                <% }) %>
-                            <% } %>
-                            <% if (locals.messages.info) { %>
-                                <% messages.info.forEach( el => { %>
-                                <div class="alert alert-info shadow-lg">
-                                    <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    <span><%= el.msg %></span>
-                                    </div>
-                                </div>
-                                <% }) %>
-                            <% } %> -->
-                            <div class="form-control mt-6">
-                                <button type="submit" class="btn btn-primary">Create Project</button>
-                            </div>
-                            </form>
+                            <label for="dueDate" class="label"><span class="label-text">Due Date</span></label>
+                            <input type="date" name="dueDate" id="dueDate" class="input input-bordered" required/>                           
                         </div>
-                    </div>
-                </li>
-                <!-- Add Task Drawer -->
-                <li class="hidden" id="addTaskDrawer">
-                    <div class="hero-content">
-                        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                            <form class="card-body" action="/project/newProject" method="POST">
-                                <div class="form-control">
-                                    <label for="description" class="label">
-                                        <span class="label-text">Add Task</span>
-                                    </label>
-                                    <input type="text" name="description" id="description" placeholder="Task" class="input input-bordered" />
+                    <!-- <% if (locals.messages.errors) { %>
+                        <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-warning shadow-lg">
+                            <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            <span><%= el.msg %></span>
+                            </div>
+                        </div>
+                        <% }) %>
+                    <% } %>
+                    <% if (locals.messages.info) { %>
+                        <% messages.info.forEach( el => { %>
+                        <div class="alert alert-info shadow-lg">
+                            <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><%= el.msg %></span>
+                            </div>
+                        </div>
+                        <% }) %>
+                    <% } %> -->
+                        <div class="form-control mt-6">
+                            <button type="submit" class="btn btn-primary">Create Project</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <!-- Add Task Drawer -->
+            <li class="hidden" id="addTaskDrawer">
+                <div class="card w-full bg-base-100">
+                    <form class="card-body" action="/project/newTask/<%= project._id %>" method="POST">
+                        <div class="form-control">
+                            <label for="description" class="label"><span class="label-text">Add Task</span></label>
+                            <input type="text" name="description" id="description" placeholder="Task" class="input input-bordered" required/>
 
-                                    <label for="dueDate" class="label">
-                                        <span class="label-text">Due Date</span>
-                                    </label>
-                                    <input type="date" name="dueDate" id="dueDate" class="input input-bordered" />                           
-                                </div>
-                                <div class="form-control mt-6">
-                                    <button type="submit" class="btn btn-primary">Create Project</button>
-                                </div>
-                            </form>
+                            <label for="status" class="label"><span class="label-text">Status</span></label>
+                            <select name="status" id="status" class="select select-bordered" required>
+                                <option selected="To-Do">To-Do</option>
+                                <option value="Doing">Doing</option>
+                                <option value="Done">Done</option>
+                            </select>
+
+                            <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
+                            <select name="assignedTo" id="assignedTo" class="select select-bordered" required>
+                                <option selected="Open">Open</option>
+                                <% for(let i=0; i<Users.length; i++) {%>
+                                    <option value="<%= Users[i].email%>"><%= Users[i].email%></option>
+                                <% } %>
+                            </select>
+
+                            <label for="dueDate" class="label"><span class="label-text">Due Date</span></label>
+                            <input type="date" name="dueDate" id="dueDate" class="input input-bordered" required/>                          
                         </div>
+                        <div class="form-control mt-6">
+                            <button type="submit" class="btn btn-primary">Add Task</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <!-- To-Do Drawer -->
+            <% for(let i=0; i<todos.length; i++) {%>
+                <li class="hidden todoDrawer">
+                    <div class="card w-full bg-base-100">
+                        <span class="card-body p-3">Description: <%= todos[i].description%></span>
+                        <!-- Update Status -->
+                        <form class="card-body p-3" action="/project/updateStatus/<%= todos[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="status" class="label"><span class="label-text">Status</span></label>
+                            <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= todos[i].status%>"><%= todos[i].status%></option>
+                                <option value="Doing">Doing</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </form>
+                        <!-- Update Assignee -->
+                        <form class="card-body p-3" action="/project/updateAssignee/<%= todos[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
+                            <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= todos[i].assignedTo%>"><%= todos[i].assignedTo%></option>
+                                <option selected="Open">Open</option>
+                                <% for(let i=0; i<Users.length; i++) {%>
+                                    <option value="<%= Users[i].email%>"><%= Users[i].email%></option>
+                                <% } %>
+                            </select>
+                            <button class="btn btn-primary btn-sm text-center text-xs">Assign To Me</button>
+                        </form>
                     </div>
+                    <div class="divider my-0"></div>                 
+
+                    <!-- Add a Comment -->
+                    <div class="card w-full bg-base-100 my-5">
+                        <form class="card-body p-3" action="/project/commentTask/<%= todos[i]._id %>/<%= project._id %>" method="POST">
+                                <label for="comment" class="label"><span class="label-text">Add a comment</span></label>
+                                <textarea id="comment" rows="1" name="comment"
+                                    class="textarea textarea-bordered"
+                                    placeholder="Write a comment..." required></textarea>
+                            <button type="submit"class="btn btn-primary btn-sm text-center text-xs">Post comment</button>
+                        </form>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <% for(let j=0; j<comments.length; j++) {%>
+                        <% if (comments[j].task.toString() == todos[i]._id.toString()) { %>
+                        <div class="chat <%= comments[j].user == user.id ? 'chat-end' : 'chat-start'%> pt-2">
+                            <div class="chat-header"><%= comments[j].userName%></div>
+                            <div class="chat-bubble"><%= comments[j].comment%></div>
+                            <time class="chat-footer text-xs opacity-50"><%= comments[j].createdAt.toUTCString()%></time>
+                        </div>
+                        <% } %>
+                    <% } %>   
                 </li>
-                <li class="hidden todoDrawer"><a>To Do 1</a></li>
-                <li class="hidden todoDrawer"><a>To Do 2</a></li>
-                <li class="hidden doingDrawer"><a>Doing 1</a></li>
-                <li class="hidden doingDrawer"><a>Doing 2</a></li>
-                <li class="hidden doingDrawer"><a>Doing 3</a></li>
-                <li class="hidden doneDrawer"><a>Done 1</a></li>
-                <li class="hidden doneDrawer"><a>Done 2</a></li>
-                <li class="hidden doneDrawer"><a>Done 3</a></li>
-            </ul>
-        </aside>
-    </div>
+            <% } %>
+
+            <!-- Doing Drawer -->
+            <% for(let i=0; i<doing.length; i++) {%>
+                <li class="hidden doingDrawer">
+                    <div class="card w-full bg-base-100">
+                        <span class="card-body p-3">Description: <%= doing[i].description%></span>
+                        <!-- Update Status -->
+                        <form class="card-body p-3" action="/project/updateStatus/<%= doing[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="status" class="label"><span class="label-text">Status</span></label>
+                            <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= doing[i].status%>"><%= doing[i].status%></option>
+                                <option value="To-Do">To-Do</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </form>
+                        <!-- Update Assignee -->
+                        <form class="card-body p-3" action="/project/updateAssignee/<%= doing[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
+                            <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= doing[i].assignedTo%>"><%= doing[i].assignedTo%></option>
+                                <option selected="Open">Open</option>
+                                <% for(let i=0; i<Users.length; i++) {%>
+                                    <option value="<%= Users[i].email%>"><%= Users[i].email%></option>
+                                <% } %>
+                            </select>
+                            <button class="btn btn-primary btn-sm text-center text-xs">Assign To Me</button>
+                        </form>
+                    </div>
+                    <div class="divider my-0"></div>                 
+
+                    <!-- Add a Comment -->
+                    <div class="card w-full bg-base-100 my-5">
+                        <form class="card-body p-3" action="/project/commentTask/<%= doing[i]._id %>/<%= project._id %>" method="POST">
+                                <label for="comment" class="label"><span class="label-text">Add a comment</span></label>
+                                <textarea id="comment" rows="1" name="comment"
+                                    class="textarea textarea-bordered"
+                                    placeholder="Write a comment..." required></textarea>
+                            <button type="submit"class="btn btn-primary btn-sm text-center text-xs">Post comment</button>
+                        </form>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <% for(let j=0; j<comments.length; j++) {%>
+                        <% if (comments[j].task.toString() == doing[i]._id.toString()) { %>
+                        <div class="chat <%= comments[j].user == user.id ? 'chat-end' : 'chat-start'%> pt-2">
+                            <div class="chat-header"><%= comments[j].userName%></div>
+                            <div class="chat-bubble"><%= comments[j].comment%></div>
+                            <time class="chat-footer text-xs opacity-50"><%= comments[j].createdAt.toUTCString()%></time>
+                        </div>
+                        <% } %>
+                    <% } %>   
+                </li>
+            <% } %>
+
+            <!-- Done Drawer -->
+            <% for(let i=0; i<done.length; i++) {%>
+                <li class="hidden doneDrawer">
+                    <div class="card w-full bg-base-100">
+                        <span class="card-body p-3">Description: <%= done[i].description%></span>
+                        <!-- Update Status -->
+                        <form class="card-body p-3" action="/project/updateStatus/<%= done[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="status" class="label"><span class="label-text">Status</span></label>
+                            <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= done[i].status%>"><%= done[i].status%></option>
+                                <option value="To-Do">To-Do</option>
+                                <option value="Doing">Doing</option>
+                            </select>
+                        </form>
+                        <!-- Update Assignee -->
+                        <form class="card-body p-3" action="/project/updateAssignee/<%= done[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
+                            <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
+                            <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
+                                <option selected="<%= done[i].assignedTo%>"><%= done[i].assignedTo%></option>
+                                <% for(let i=0; i<Users.length; i++) {%>
+                                    <option value="<%= Users[i].email%>"><%= Users[i].email%></option>
+                                <% } %>
+                            </select>
+                            <button class="btn btn-primary btn-sm text-center text-xs">Assign To Me</button>
+                        </form>
+                    </div>
+                    <div class="divider my-0"></div>                 
+
+                    <!-- Add a Comment -->
+                    <div class="card w-full bg-base-100 my-5">
+                        <form class="card-body p-3" action="/project/commentTask/<%= done[i]._id %>/<%= project._id %>" method="POST">
+                                <label for="comment" class="label"><span class="label-text">Add a comment</span></label>
+                                <textarea id="comment" rows="1" name="comment"
+                                    class="textarea textarea-bordered"
+                                    placeholder="Write a comment..." required></textarea>
+                            <button type="submit"class="btn btn-primary btn-sm text-center text-xs">Post comment</button>
+                        </form>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <% for(let j=0; j<comments.length; j++) {%>
+                        <% if (comments[j].task.toString() == done[i]._id.toString()) { %>
+                        <div class="chat <%= comments[j].user == user.id ? 'chat-end' : 'chat-start'%> pt-2">
+                            <div class="chat-header"><%= comments[j].userName%></div>
+                            <div class="chat-bubble"><%= comments[j].comment%></div>
+                            <time class="chat-footer text-xs opacity-50"><%= comments[j].createdAt.toUTCString()%></time>
+                        </div>
+                        <% } %>
+                    <% } %>   
+                </li>
+            <% } %>
+        </ul>
+    </aside>
+</div>
