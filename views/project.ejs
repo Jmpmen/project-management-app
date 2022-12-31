@@ -1,4 +1,4 @@
-<%- include('partials/header', {title: 'Project Management App'}) -%>
+<%- include('partials/header', {title: project.name}) -%>
 
     <!-- Menu -->
       <section class="drawer drawer-end flex-grow">
@@ -7,7 +7,7 @@
           <%- include('partials/sidebar') -%>
           <!-- Page content here -->
           <div class="flex-col w-full px-6 pb-16 pt-6">
-
+            <div class="mb-5">Hello, <%= user.userName %></div>
             <div>Project Name: <%= project.name%></div>
             <div>Description: <%= project.description%></div>
             <div>Due Date: <%= project.dueDate.toUTCString().slice(5,16)%></div>
