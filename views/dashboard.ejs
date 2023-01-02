@@ -1,4 +1,4 @@
-<%- include('partials/header', {title: projects[0].name}) -%>
+<%- include('partials/header', {title: 'Alpha Laguna, Ltd.'}) -%>
 
     <!-- Menu -->
       <section class="drawer drawer-end flex-grow">
@@ -66,5 +66,5 @@
       </div>
 
 
-<%- include('partials/drawer', {project: projects[0]}) -%>
+<%- include('partials/drawer', {project: projects[0] || ''}) -%>
 <%- include('partials/footer') -%>
