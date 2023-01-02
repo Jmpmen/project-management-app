@@ -1,13 +1,13 @@
 {
   "name": "project-management-app",
   "version": "1.0.0",
-  "description": "A simple project management web application",
+  "description": "A project management web application",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install && npm run watch",
-    "watch": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch"
+    "watch": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css"
   },
   "author": "James Michael Mendoza",
   "license": "MIT",

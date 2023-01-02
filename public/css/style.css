@@ -3376,6 +3376,18 @@ html {
   width: 20rem;
 }
 
+.w-11\/12 {
+  width: 91.666667%;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
+}
+
+.w-8\/12 {
+  width: 66.666667%;
+}
+
 .max-w-sm {
   max-width: 24rem;
 }
@@ -3546,7 +3558,37 @@ html {
   height: auto;
 }
 
+@media (min-width: 768px) {
+  .md\:w-4\/12 {
+    width: 33.333333%;
+  }
+
+  .md\:w-8\/12 {
+    width: 66.666667%;
+  }
+
+  .md\:w-7\/12 {
+    width: 58.333333%;
+  }
+
+  .md\:w-6\/12 {
+    width: 50%;
+  }
+}
+
 @media (min-width: 1024px) {
+  .lg\:w-4\/12 {
+    width: 33.333333%;
+  }
+
+  .lg\:w-6\/12 {
+    width: 50%;
+  }
+
+  .lg\:w-2\/12 {
+    width: 16.666667%;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -3557,5 +3599,11 @@ html {
 
   .lg\:text-left {
     text-align: left;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-4\/12 {
+    width: 33.333333%;
   }
 }
