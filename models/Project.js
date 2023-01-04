@@ -16,10 +16,6 @@ const ProjectSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  dueDate: {
-    type: Date,
-    required: true,
-  },
 });
 
 //MongoDB Collection named here - will give lowercase plural of name 

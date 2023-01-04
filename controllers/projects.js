@@ -45,7 +45,6 @@ module.exports = {
           name: req.body.name,
           description: req.body.description,
           user: req.user.id,
-          dueDate: req.body.dueDate,
         });
       console.log("Project has been created!");
       res.redirect("/");
