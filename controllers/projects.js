@@ -9,7 +9,7 @@ module.exports = {
       //router.get("/", ensureAuth, projectsController.getDashboard);
       //http://localhost:3000/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
-      const projects = await Project.find().sort({ dueDate: "asc"}).lean();
+      const projects = await Project.find().sort({ createdAt: "asc"}).lean();
       const Users = await User.find().lean();
       const todos = await Task.find({project: projects[0], status: 'To-Do'}).sort({ dueDate: "asc"}).lean();
       const doing = await Task.find({project: projects[0], status: 'Doing'}).sort({ dueDate: "asc"}).lean();
@@ -27,7 +27,7 @@ module.exports = {
       //http://localhost:3000/project/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
       const project = await Project.findById(req.params.id);
-      const projects = await Project.find().sort({ dueDate: "asc"}).lean();
+      const projects = await Project.find().sort({ createdAt: "asc"}).lean();
       const Users = await User.find().lean();
       const todos = await Task.find({project: req.params.id, status: 'To-Do'}).sort({ dueDate: "asc"}).lean();
       const doing = await Task.find({project: req.params.id, status: 'Doing'}).sort({ dueDate: "asc"}).lean();
