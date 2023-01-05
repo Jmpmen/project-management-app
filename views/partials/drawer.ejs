@@ -32,14 +32,14 @@
 
                             <label for="status" class="label"><span class="label-text">Status</span></label>
                             <select name="status" id="status" class="select select-bordered" required>
-                                <option selected="To-Do">To-Do</option>
+                                <option value="To-Do" selected>To-Do</option>
                                 <option value="Doing">Doing</option>
                                 <option value="Done">Done</option>
                             </select>
 
                             <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
                             <select name="assignedTo" id="assignedTo" class="select select-bordered" required>
-                                <option selected="Open">Open</option>
+                                <option value="Open" selected>Open</option>
                                 <% for(let i=0; i<Users.length; i++) {%>
                                     <option value="<%= Users[i].email%>"><%= Users[i].email%></option>
                                 <% } %>
@@ -63,7 +63,7 @@
                         <form class="card-body p-3" action="/project/updateStatus/<%= todos[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="status" class="label"><span class="label-text">Status</span></label>
                             <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= todos[i].status%>"><%= todos[i].status%></option>
+                                <option value="<%= todos[i].status%>" selected><%= todos[i].status%></option>
                                 <option value="Doing">Doing</option>
                                 <option value="Done">Done</option>
                             </select>
@@ -72,7 +72,7 @@
                         <form class="card-body p-3" action="/project/updateAssignee/<%= todos[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
                             <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= todos[i].assignedTo%>"><%= todos[i].assignedTo%></option>
+                                <option value="<%= todos[i].assignedTo%>" selected><%= todos[i].assignedTo%></option>
                                 <% if (todos[i].assignedTo !== 'Open') { %>
                                     <option value="Open">Open</option>
                                 <% } %>
@@ -129,7 +129,7 @@
                         <form class="card-body p-3" action="/project/updateStatus/<%= doing[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="status" class="label"><span class="label-text">Status</span></label>
                             <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= doing[i].status%>"><%= doing[i].status%></option>
+                                <option value="<%= doing[i].status%>" selected><%= doing[i].status%></option>
                                 <option value="To-Do">To-Do</option>
                                 <option value="Done">Done</option>
                             </select>
@@ -138,7 +138,7 @@
                         <form class="card-body p-3 mb-5" action="/project/updateAssignee/<%= doing[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
                             <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= doing[i].assignedTo%>"><%= doing[i].assignedTo%></option>
+                                <option value="<%= doing[i].assignedTo%>" selected><%= doing[i].assignedTo%></option>
                                 <% if (doing[i].assignedTo !== 'Open') { %>
                                     <option value="Open">Open</option>
                                 <% } %>
@@ -185,7 +185,7 @@
                         <form class="card-body p-3" action="/project/updateStatus/<%= done[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="status" class="label"><span class="label-text">Status</span></label>
                             <select name="status" id="status" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= done[i].status%>"><%= done[i].status%></option>
+                                <option value="<%= done[i].status%>" selected><%= done[i].status%></option>
                                 <option value="To-Do">To-Do</option>
                                 <option value="Doing">Doing</option>
                             </select>
@@ -194,7 +194,7 @@
                         <form class="card-body p-3" action="/project/updateAssignee/<%= done[i]._id %>/<%= project._id %>?_method=PUT" method="POST">
                             <label for="assignedTo" class="label"><span class="label-text">Assigned To</span></label>
                             <select name="assignedTo" id="assignedTo" class="select select-bordered" onchange="this.form.submit()">
-                                <option selected="<%= done[i].assignedTo%>"><%= done[i].assignedTo%></option>
+                                <option value="<%= done[i].assignedTo%>" selected><%= done[i].assignedTo%></option>
                                 <% if (done[i].assignedTo !== 'Open') { %>
                                     <option value="Open">Open</option>
                                 <% } %>
