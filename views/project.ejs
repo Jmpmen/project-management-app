@@ -19,7 +19,7 @@
                 <% for(let i=0; i<todos.length; i++) {%>
                 <!-- <div class="pt-5 pb-1">TITLE</div>  -->
                 <div class="todo pt-5 pb-1">
-                  <label for="my-drawer-4" class="drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= todos[i].assignedTo === 'Open'  ? 'bg-primary' : todos[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= todos[i].description%></label>
+                  <label for="my-drawer-4" class="p-2 drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= todos[i].assignedTo === 'Open'  ? 'bg-primary' : todos[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= todos[i].description%></label>
                   <section class="flex justify-between text-sm">
                     <div class="opacity-50">Due Date: <%= todos[i].dueDate.toUTCString().slice(5,16)%></div>
                     <div class="opacity-50">Assigned To: <%= todos[i].assignedTo%></div>
@@ -34,7 +34,7 @@
                 <% if(doing.length) { %>
                 <% for(let i=0; i<doing.length; i++) {%>
                   <div class="doing pt-5 pb-1">
-                    <label for="my-drawer-4" class="drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= doing[i].assignedTo === 'Open'  ? 'bg-primary' : doing[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= doing[i].description%></label>
+                    <label for="my-drawer-4" class="p-2 drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= doing[i].assignedTo === 'Open'  ? 'bg-primary' : doing[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= doing[i].description%></label>
                     <section class="flex justify-between text-sm">
                       <div class="opacity-50">Due Date: <%= doing[i].dueDate.toUTCString().slice(5,16)%></div>
                       <div class="opacity-50">Assigned To: <%= doing[i].assignedTo%></div>
@@ -49,7 +49,7 @@
                 <% if(done.length) { %>
                 <% for(let i=0; i<done.length; i++) {%>
                   <div class="done pt-5 pb-1">
-                    <label for="my-drawer-4" class="drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= done[i].assignedTo === 'Open'  ? 'bg-primary' : done[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= done[i].description%></label>
+                    <label for="my-drawer-4" class="p-2 drawer-button grid h-20 card rounded-box place-items-center grid-row-2 cursor-pointer <%= done[i].assignedTo === 'Open'  ? 'bg-primary' : done[i].assignedTo === user.email ? 'bg-base-300' : 'bg-base-200'%>"><%= done[i].description%></label>
                     <section class="flex justify-between text-sm">
                       <div class="opacity-50">Due Date: <%= done[i].dueDate.toUTCString().slice(5,16)%></div>
                       <div class="opacity-50">Assigned To: <%= done[i].assignedTo%></div>
