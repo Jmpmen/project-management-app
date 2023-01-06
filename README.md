@@ -2,7 +2,7 @@
 
 A project management app used for managing different projects. 
 
-The user has the ability to create a task, update, delete, and add comments to existing tasks.
+The user has the ability to create a new project or task, update, delete, and add comments to existing tasks.
 
 This is a project for a client which aims to help them manage their projects efficiently.
 
